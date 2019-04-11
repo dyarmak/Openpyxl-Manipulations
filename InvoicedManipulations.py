@@ -52,6 +52,13 @@ for r in range(2, sInvo.max_row+1):
         sInvo.cell(row=r, column=invoicedDict["Due"]).value = "Def-1"
         
 
+# ------------- INSERT Column ----------
+#Insert after SubProjectTypeName
+sInvo.insert_cols(invoicedDict["SubProjectTypeName"]+1)
+sInvo.cell(row=1, column= invoicedDict["SubProjectTypeName"]+1).value = "Type"
+
+
+
 #---------- Build Output File Name ------------
 # Filename of FINAL output file is ForecastYYYYMMDD.xlsx
 
