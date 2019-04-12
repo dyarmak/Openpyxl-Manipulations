@@ -18,9 +18,6 @@ sCred = wbCred.active
 
 # ----------- BEGIN Find Column Indexes -------------------
 print("Loading column names")
-creditsDictLog = open("creditsDictLog.txt", "w+")
-# Should have a dict list that stores the column names
-# maybe a key value pair with SubProjectStatus as the key, and the value as the column index
 
 #Create an empty dictionary
 creditsDict = {}
@@ -30,6 +27,7 @@ creditsDict = {}
 
 get_column_names_and_index(sCred, creditsDict)
 if(logMe == 1):
+    creditsDictLog = open("creditsDictLog.txt", "w+")
     #Prints all of the dictionary key:value pairs
     for field, row in creditsDict.items():
         logString = field + " : " + str(row) + "\n"
