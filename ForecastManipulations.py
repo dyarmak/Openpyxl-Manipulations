@@ -17,10 +17,7 @@ sFore = wbFore.active
 
 # ----------- BEGIN Find Column Indexes -------------------
 # Should have a dict list that stores the column names
-
 print("Loading column names")
-
-
 #Create an empty dictionary
 forecastDict = {}
 # fill the dictionary with:
@@ -46,10 +43,7 @@ if(logMe == 1):
 sFore.freeze_panes = "A2"
 
 # Need to top and left align all the data
-alignment = Alignment(horizontal="left", vertical="top")
 yellowFill = PatternFill(patternType="solid", fgColor="FFFF00" )
-for x in range(1,(sFore.max_column+1)):
-    sFore.cell(row=1, column=x).alignment = alignment
 
 # -------------- END Formatting --------------
 
@@ -128,6 +122,7 @@ if(logMe == 1):
 
 for r in range(2, sFore.max_row+1):
     # IF InvoiceDateSent != None, Forecast GETS None and we fill cell background with yellow
+    # cell formatting does not carry over when amalgamating the data in the next step. 
     if(sFore.cell(row=r, column=forecastDict["InvoiceDateSent"]).value != None): # May need to test for == 2018 or == 2019 instead
         if(logMe == 1):
             logString = "subID " + str(sFore.cell(row=r, column=1).value) + " has an Invoice\n"
