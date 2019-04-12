@@ -12,7 +12,7 @@
 from myxlutils import cvt_xls_to_xlsx, format_date_rows, get_column_names_and_index
 import os
 import openpyxl
-from runXLSX import forecastFName, invoicedFName, creditFName
+from excelFNames import forecastFName, invoicedFName, creditFName
 
 # Make Output Folder
 savePath = "py_Output"

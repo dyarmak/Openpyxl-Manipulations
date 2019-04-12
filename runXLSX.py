@@ -11,12 +11,7 @@
 import os
 import shutil
 from os import path
-
-# FileName variables
-forecastFName = "qry_Forecast.xlsx"
-invoicedFName = "qry_Invoiced.xlsx"
-creditFName = "qry_Credits.xlsx"
-combinedFName = "Combined.xlsx"
+from excelFNames import forecastFName, invoicedFName, creditFName, combinedFName
 
 # ******************* PLEASE NOTE **************************
 # OpenPyXL can only work with .xlsx files (Excel 2007 and newer)

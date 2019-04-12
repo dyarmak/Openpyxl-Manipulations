@@ -5,9 +5,8 @@ import time
 import xlrd
 from openpyxl import Workbook
 import openpyxl
-
 from myxlutils import save_and_reopen, format_date_rows, get_column_names_and_index
-from runXLSX import creditFName
+from excelFNames import creditFName
 
 startTimer = time.time()
 
