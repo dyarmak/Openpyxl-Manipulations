@@ -33,7 +33,7 @@ savePath = "py_Output"
 if os.path.exists(savePath) is False:
         os.mkdir(savePath)
 
-
+# Copy files to the savePath directory
 if os.path.exists("qry_Forecast_cc.xlsx"):
     src = os.path.realpath("qry_Forecast_cc.xlsx")
     head, tail = path.split(src)
