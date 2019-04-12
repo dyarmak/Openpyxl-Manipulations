@@ -81,8 +81,14 @@ import CreditsManipulations
 # RUN Invoiced manipulation code
 import InvoicedManipulations
 # Amalgamate the three files into one
-# import joinData
+import joinData
+# Add VLookup values
+import vlook
+# Fix WHERE Type == HSE || CRB || Software
+
 # Open .xlsx file with pivots
+# Cant seem to do this, could be due to PW protection?
+
 
 # Clear contents of details sheet
 
