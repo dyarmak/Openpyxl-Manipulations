@@ -4,9 +4,7 @@ import time
 import openpyxl
 from openpyxl.styles import Alignment, PatternFill
 from myxlutils import get_column_names_and_index
-from excelFNames import forecastFName
-
-logMe = 1
+from excelFNames import forecastFName, logMe
 
 startTimer = time.time()
 

@@ -6,7 +6,7 @@ import xlrd
 from openpyxl import Workbook
 import openpyxl
 from myxlutils import save_and_reopen, format_date_rows, get_column_names_and_index
-from excelFNames import creditFName
+from excelFNames import creditFName, logMe
 
 startTimer = time.time()
 
@@ -29,15 +29,15 @@ creditsDict = {}
 # Value = column index
 
 get_column_names_and_index(sCred, creditsDict)
+if(logMe == 1):
+    #Prints all of the dictionary key:value pairs
+    for field, row in creditsDict.items():
+        logString = field + " : " + str(row) + "\n"
+        creditsDictLog.write(logString)
+        # print(logString)
+    creditsDictLog.close()
 
-#Prints all of the dictionary key:value pairs
-for field, row in creditsDict.items():
-    logString = field + " : " + str(row) + "\n"
-    creditsDictLog.write(logString)
-    # print(logString)
-creditsDictLog.close()
-
-print("Created creditsDictLog.txt\n")
+    print("Created creditsDictLog.txt\n")
 # ----------- END Find Column Indexes ------------------    
 
 

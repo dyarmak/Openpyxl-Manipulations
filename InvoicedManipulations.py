@@ -6,9 +6,7 @@ import xlrd
 from openpyxl import Workbook
 import openpyxl
 from myxlutils import save_and_reopen, format_date_rows, get_column_names_and_index
-from excelFNames import invoicedFName
-
-logMe = 1
+from excelFNames import invoicedFName, logMe
 
 startTimer = time.time()
 
