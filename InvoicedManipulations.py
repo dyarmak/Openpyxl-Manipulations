@@ -56,9 +56,15 @@ for r in range(2, sInvo.max_row+1):
 #Insert after SubProjectTypeName
 sInvo.insert_cols(invoicedDict["SubProjectTypeName"]+1)
 sInvo.cell(row=1, column= invoicedDict["SubProjectTypeName"]+1).value = "Type"
+# Update indexes after move
+get_column_names_and_index(sInvo, invoicedDict)
 
-
-
+# This is NOT in Christy's process, but in order to make the data actually line up we need to...
+# Insert 3 rows after "OriginalDueDate"
+for x in range(0,3):
+    sInvo.insert_cols(invoicedDict["OriginalDueDate"]+1)
+# Update indexes after move
+get_column_names_and_index(sInvo, invoicedDict)
 #---------- Build Output File Name ------------
 # Filename of FINAL output file is ForecastYYYYMMDD.xlsx
 
