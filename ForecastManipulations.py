@@ -60,7 +60,7 @@ if(logMe == 1):
 
 # find and Delete WHERE Status==Planning and inBudget==False
 
-for r in range(sFore.max_row, 2, -1): #Start from the bottom, because of how :func delete_rows() works
+for r in range(sFore.max_row+1, 2, -1): #Start from the bottom, because of how :func delete_rows() works
     if(sFore.cell(row=r, column=forecastDict["SubProjectStatus"]).value == "Planning" and sFore.cell(row=r, column=forecastDict["IncludeinBudget"]).value == False):
         if(logMe == 1):
             #Log the deleted rows
