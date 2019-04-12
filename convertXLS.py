@@ -12,7 +12,7 @@
 from myxlutils import cvt_xls_to_xlsx, format_date_rows, get_column_names_and_index
 import os
 import openpyxl
-
+from runXLSX import forecastFName, invoicedFName, creditFName
 
 # Make Output Folder
 savePath = "py_Output"
@@ -52,7 +52,7 @@ get_column_names_and_index(sFore, forecastDict)
 format_date_rows(sFore, forecastDict, "mm-dd-yy", "Due Date", "InvoiceDateSent", "OriginalDueDate")
 
 # Save and close
-wbFore.save("Forecast.xlsx")
+wbFore.save(forecastFName)
 wbFore.close()
 
 
@@ -74,7 +74,7 @@ get_column_names_and_index(sCred, creditsDict)
 format_date_rows(sCred, creditsDict, "mm-dd-yy", "Due Date", "OriginalDueDate")
 
 # Save and close
-wbCred.save("Credits.xlsx")
+wbCred.save(creditFName)
 wbCred.close()
 
 
@@ -97,6 +97,6 @@ get_column_names_and_index(sInvo, invoicedDict)
 format_date_rows(sInvo, invoicedDict, "mm-dd-yy", "Due Date", "OriginalDueDate", "InvoiceDateSent")
 
 # Save and close
-wbInvo.save("Invoiced.xlsx")
+wbInvo.save(invoicedFName)
 wbInvo.close()
 

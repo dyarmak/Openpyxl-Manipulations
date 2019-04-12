@@ -5,14 +5,14 @@ import openpyxl
 from openpyxl.styles import Alignment, PatternFill
 from myxlutils import get_column_names_and_index
 
-logMe = 1
+from runXLSX import forecastFName
 
-forecast = "Forecast.xlsx"
+logMe = 1
 
 startTimer = time.time()
 
 # ------------- Load ---------------
-wbFore = openpyxl.load_workbook(forecast)
+wbFore = openpyxl.load_workbook(forecastFName)
 sFore = wbFore.active
 
 # ----------- BEGIN Find Column Indexes -------------------
@@ -197,22 +197,10 @@ if(logMe == 1):
 sFore.insert_cols(forecastDict["SubProjectTypeName"]+1)
 sFore.cell(row=1, column= forecastDict["SubProjectTypeName"]+1).value = "Type"
 
-
-
-#---------- Build Output File Name ------------
-# Filename of FINAL output file is ForecastYYYYMMDD.xlsx
-
-# first we get the current datetime
-# d = datetime.datetime.now()
-# dstr = d.strftime("%Y%m%d")
-# This will just be Forecast.xlsx for now
-outFileName = "Forecast" + ".xlsx"
-#---------- END Build Output File Name --------------
-
 # ------------ SAVE Output Excel File -------------
 
-wbFore.save(outFileName)
-print("File saved as " + outFileName)
+wbFore.save(forecastFName)
+print("File saved as " + forecastFName)
 wbFore.close()
 
 # -------------- Timer -----------------------

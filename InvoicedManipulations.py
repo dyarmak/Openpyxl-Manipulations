@@ -6,14 +6,14 @@ import xlrd
 from openpyxl import Workbook
 import openpyxl
 from myxlutils import save_and_reopen, format_date_rows, get_column_names_and_index
+from runXLSX import invoicedFName
 
 logMe = 1
-invoiced = "Invoiced.xlsx"
 
 startTimer = time.time()
 
 # ------------- Load ---------------
-wbInvo = openpyxl.load_workbook(invoiced)
+wbInvo = openpyxl.load_workbook(invoicedFName)
 sInvo = wbInvo.active 
 
 # ----------- BEGIN Find Column Indexes -------------------
@@ -65,20 +65,11 @@ for x in range(0,3):
     sInvo.insert_cols(invoicedDict["OriginalDueDate"]+1)
 # Update indexes after move
 get_column_names_and_index(sInvo, invoicedDict)
-#---------- Build Output File Name ------------
-# Filename of FINAL output file is ForecastYYYYMMDD.xlsx
-
-# first we get the current datetime
-# d = datetime.datetime.now()
-# dstr = d.strftime("%Y%m%d")
-# This will just be Invoiced.xlsx for now
-outFileName = "Invoiced" + ".xlsx"
-#---------- END Build Output File Name --------------
 
 # ------------ SAVE Output Excel File -------------
 
-wbInvo.save(outFileName)
-print("File saved as " + outFileName)
+wbInvo.save(invoicedFName)
+print("File saved as " + invoicedFName)
 wbInvo.close()
 
 # -------------- Timer -----------------------

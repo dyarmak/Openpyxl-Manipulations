@@ -1,26 +1,19 @@
 import openpyxl
 from openpyxl.styles import Alignment, PatternFill
 from myxlutils import format_date_rows, get_column_names_and_index
-
-# from ForecastManipulations import forecastDict
-# from InvoicedManipulations import invoicedDict
-# from CreditsManipulations import creditsDict
+from runXLSX import forecastFName, invoicedFName, creditFName, combinedFName
 
 wbCombined = openpyxl.Workbook()
 sCombined = wbCombined.active
 sCombined.title = "Detail"
 
-forecast = "Forecast.xlsx"
-invoiced = "Invoiced.xlsx"
-credit = "Credits.xlsx"
-
-wbFore = openpyxl.load_workbook(forecast)
+wbFore = openpyxl.load_workbook(forecastFName)
 sFore = wbFore.active
 
-wbInvo = openpyxl.load_workbook(invoiced)
+wbInvo = openpyxl.load_workbook(invoicedFName)
 sInvo = wbInvo.active
 
-wbCred = openpyxl.load_workbook(credit)
+wbCred = openpyxl.load_workbook(creditFName)
 sCred = wbCred.active
 
 # -------------------- Copy Forecast -> Combined ------------------------------------- 
@@ -33,9 +26,9 @@ for r in range(1, sFore.max_row+1):
                 sCombined.cell(row=r,column=c).value = sFore.cell(row=r, column=c).value
         foreRowCount+=1
 
-wbCombined.save("Combined.xlsx")
+wbCombined.save(combinedFName)
 wbCombined.close()
-wbCombined = openpyxl.load_workbook("Combined.xlsx")
+wbCombined = openpyxl.load_workbook(combinedFName)
 sCombined = wbCombined.active
 
 combinedDict = {}
@@ -60,7 +53,7 @@ for r in range(2, sInvo.max_row+1):
         invoRowCount+=1
         
 
-wbCombined.save("Combined.xlsx")
+wbCombined.save(combinedFName)
 combinedStartPoint = foreRowCount + invoRowCount -1
 credRowCount = 0
 for r in range(2, sCred.max_row+1):
@@ -68,15 +61,15 @@ for r in range(2, sCred.max_row+1):
                 sCombined.cell(row=r+combinedStartPoint,column=c).value = sCred.cell(row=r, column=c).value
         credRowCount+=1
 
-wbCombined.save("Combined.xlsx")
+wbCombined.save(combinedFName)
 
 totalRows = foreRowCount + invoRowCount + credRowCount
 print("Total Rows: " + str(totalRows))
 
 # Save and re-load workbook
-wbCombined.save("Combined.xlsx")
+wbCombined.save(combinedFName)
 wbCombined.close()
-wbCombined = openpyxl.load_workbook("Combined.xlsx")
+wbCombined = openpyxl.load_workbook(combinedFName)
 sCombined = wbCombined.active
 # Re-load column names into a new dict
 
@@ -89,5 +82,5 @@ for x in range(1,(sCombined.max_column+1)):
     sCombined.cell(row=1, column=x).alignment = alignment
 
 # Save and close
-wbCombined.save("Combined.xlsx")
+wbCombined.save(combinedFName)
 wbCombined.close()

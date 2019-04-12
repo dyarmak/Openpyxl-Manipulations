@@ -7,14 +7,13 @@ from openpyxl import Workbook
 import openpyxl
 
 from myxlutils import save_and_reopen, format_date_rows, get_column_names_and_index
-
-credit = "Credits.xlsx"
+from runXLSX import creditFName
 
 startTimer = time.time()
 
 
 # ------------- Load ---------------
-wbCred = openpyxl.load_workbook(credit)
+wbCred = openpyxl.load_workbook(creditFName)
 sCred = wbCred.active
 
 
@@ -55,18 +54,10 @@ print("Added 'CR' after SubProjectIDs")
 sCred.insert_cols(creditsDict["SubProjectTypeName"]+1)
 sCred.cell(row=1, column= creditsDict["SubProjectTypeName"]+1).value = "Type"
 
-#---------- Build Output File Name ------------
-# Filename of FINAL output file is ForecastYYYYMMDD.xlsx
-
-# first we get the current datetime
-# d = datetime.datetime.now()
-# dstr = d.strftime("%Y%m%d")
-# This will just be Credits.xlsx for now
-outFileName = "Credits" + ".xlsx"
 # ------------ SAVE Output Excel File -------------
 
-wbCred.save(outFileName)
-print("File saved as " + outFileName)
+wbCred.save(creditFName)
+print("File saved as " + creditFName)
 wbCred.close()
 
 

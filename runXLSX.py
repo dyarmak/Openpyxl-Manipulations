@@ -12,6 +12,12 @@ import os
 import shutil
 from os import path
 
+# FileName variables
+forecastFName = "qry_Forecast.xlsx"
+invoicedFName = "qry_Invoiced.xlsx"
+creditFName = "qry_Credits.xlsx"
+combinedFName = "Combined.xlsx"
+
 # ******************* PLEASE NOTE **************************
 # OpenPyXL can only work with .xlsx files (Excel 2007 and newer)
 # IF the files are of .xls type, execute the runXLS.py script
@@ -35,7 +41,7 @@ if os.path.exists("qry_Forecast_cc.xlsx"):
     # print("File: " + tail)
     dstFolder = head + "\\" + savePath
     # print("Dst folder: " + dstFolder)
-    tail = "Forecast.xlsx"
+    tail = forecastFName
     dst = dstFolder + "\\" + tail
     shutil.copy(src, dst)
 else:
@@ -49,7 +55,7 @@ if os.path.exists("qry_CreditsCC.xlsx"):
     # print("File: " + tail)
     dstFolder = head + "\\" + savePath
     # print("Dst folder: " + dstFolder)
-    tail = "Credits.xlsx"
+    tail = creditFName
     dst = dstFolder + "\\" + tail
     shutil.copy(src, dst)
 else:
@@ -63,7 +69,7 @@ if os.path.exists("qry_invoicedcc.xlsx"):
     # print("File: " + tail)
     dstFolder = head + "\\" + savePath
     # print("Dst folder: " + dstFolder)
-    tail = "Invoiced.xlsx"
+    tail = invoicedFName
     dst = dstFolder + "\\" + tail
     shutil.copy(src, dst)
 else:
