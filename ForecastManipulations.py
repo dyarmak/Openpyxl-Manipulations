@@ -82,7 +82,7 @@ if(logMe == 1):
 
 # ------ Remove 0 values from Quoted and set to None -----
 for r in range(2, sFore.max_row+1):
-    if (sFore.cell(row=r, column=forecastDict["Quoted"]).value == 0):
+    if (sFore.cell(row=r, column=forecastDict["Quoted"]).value == 0): # Quoted = 0 might be due to a quote haviung been started, but not finished
         sFore.cell(row=r, column=forecastDict["Quoted"]).value = None
 
 

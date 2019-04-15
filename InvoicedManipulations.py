@@ -39,6 +39,7 @@ if(logMe == 1):
 # ----------- END Find Column Indexes ------------------    
 
 # ------------- Deferred Revenues ---------------
+
 # IF InvoiceDateSent == 2018   Due Gets "Def-1"
 if(logMe == 1):
     invoicedDeferredLog = open("invoicedDeferredLog.txt", "w+") 
